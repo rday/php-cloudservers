@@ -373,7 +373,7 @@ class Cloud_Server {
         $this->_apiResource = '/servers/'. (int) $serverId;
         $this->_doRequest();
 
-        if ($this->_apiResponseCode && $this->_apiResponseCode == '200') {
+        if ($this->_apiResponseCode && ($this->_apiResponseCode == '200' || $this->_apiResponseCode == '203')) {
             // Save server names to avoid creating dublicate servers
             if (property_exists($this->_apiResponse, 'server')) {
                 $this->_apiServers[(int) $this->_apiResponse->server->id] =

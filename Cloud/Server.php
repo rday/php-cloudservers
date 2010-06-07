@@ -397,7 +397,7 @@ class Cloud_Server {
         $this->_apiResource = '/servers';
         $this->_doRequest();
 
-        if ($this->_apiResponseCode && $this->_apiResponseCode == '200') {
+        if ($this->_apiResponseCode && ($this->_apiResponseCode == '200' || $this->_apiResponseCode == '203')) {
             if (property_exists($this->_apiResponse, 'servers')) {
                 // Reset internal server array
                 $this->_apiServers = array();
@@ -664,7 +664,7 @@ class Cloud_Server {
             }
         }
 
-        $this->_apiResource = '/servers.xml';
+        $this->_apiResource = '/servers';
         $this->_apiJson = array ('server' => array(
                                 'name' => $name,
                                 'imageId' => (int) $imageId,
